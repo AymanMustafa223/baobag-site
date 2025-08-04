@@ -1,270 +1,159 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Baobag Shop</title>
+  <meta charset="UTF-8">
+  <title>Baobag - طلب الشنط</title>
   <style>
     body {
-      margin: 0;
-      font-family: 'Helvetica Neue', sans-serif;
-      background-color: #fff;
-      color: #d6336c;
-    }
-    header {
-      background-color: #f8d7da;
+      font-family: 'Arial', sans-serif;
+      background: #f7f7f7;
       padding: 20px;
       text-align: center;
     }
-    header h1 {
-      font-size: 36px;
-      margin: 0;
-      font-family: 'Cursive', sans-serif;
-    }
-    .announcement {
-      background-color: #f1c0c0;
-      color: #8b0000;
-      padding: 10px;
-      text-align: center;
-      font-weight: bold;
-    }
-    .section-title {
-      text-align: center;
-      font-size: 28px;
-      margin-top: 40px;
-      margin-bottom: 20px;
-    }
-    .products {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 20px;
-      padding: 0 20px;
-    }
     .product-card {
-      background-color: #ffe6eb;
+      background: #fff;
       border-radius: 15px;
-      width: 200px;
-      text-align: center;
-      padding: 10px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    }
-    .slider {
-      position: relative;
-      width: 100%;
-      height: 200px;
-      overflow: hidden;
-      border-radius: 10px;
-      cursor: pointer;
+      padding: 15px;
+      margin: 15px auto;
+      width: 300px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
     }
     .slider img {
       width: 100%;
-      height: 200px;
-      object-fit: cover;
-      position: absolute;
-      top: 0;
-      left: 0;
-      opacity: 0;
-      transition: opacity 0.5s ease-in-out;
-    }
-    .slider img.active {
-      opacity: 1;
+      border-radius: 10px;
+      margin-bottom: 10px;
     }
     .product-name {
+      font-size: 20px;
       font-weight: bold;
-      margin-top: 10px;
-      font-size: 16px;
+      margin-bottom: 8px;
     }
     .product-price {
-      color: #e63946;
-      margin-top: 5px;
-      font-size: 14px;
+      color: #e91e63;
+      font-size: 18px;
+      margin-bottom: 10px;
     }
-    .collection {
-      text-align: center;
-      font-size: 24px;
-      margin: 40px 0;
-      color: #d6336c;
-    }
-    footer {
-      background-color: #f8d7da;
-      text-align: center;
-      padding: 15px;
-      font-size: 16px;
-    }
-    a.order {
+    .order {
       display: inline-block;
-      margin-top: 10px;
-      padding: 8px 20px;
-      background-color: #d6336c;
-      color: #fff;
+      background: #e91e63;
+      color: white;
+      padding: 10px 20px;
       text-decoration: none;
-      border-radius: 8px;
-      font-weight: bold;
+      border-radius: 25px;
     }
 
-    /* Modal */
-    .modal {
+    #orderForm {
       display: none;
       position: fixed;
+      top: 10%;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #fff;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.3);
       z-index: 1000;
-      left: 0;
-      top: 0;
+      width: 90%;
+      max-width: 400px;
+      text-align: right;
+    }
+
+    #orderForm input {
       width: 100%;
-      height: 100%;
-      overflow: auto;
-      background-color: rgba(0, 0, 0, 0.8);
+      padding: 10px;
+      margin: 8px 0;
+      border-radius: 8px;
+      border: 1px solid #ccc;
     }
 
-    .modal-content {
-      display: block;
-      margin: 5% auto;
-      max-width: 80%;
-      border-radius: 10px;
-    }
-
-    .close {
-      position: absolute;
-      top: 20px;
-      right: 30px;
-      font-size: 40px;
+    #orderForm button {
+      background: #e91e63;
       color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 20px;
+      margin-top: 10px;
       cursor: pointer;
-      font-weight: bold;
+    }
+
+    #orderForm button[type="button"] {
+      background: #777;
     }
   </style>
 </head>
 <body>
 
-  <header>
-    <h1>Baobag</h1>
-  </header>
+  <h1>شنط Baobag</h1>
 
-  <div class="announcement">
-你的喜欢包包
-  </div>
-
-  <div class="section-title">Best Sellers</div>
-
-  <div class="products">
-
-    <!-- Bag 1 -->
-    <div class="product-card">
-  <div class="slider">
-    <img src="bag1.jpg.jpg" class="active" />
-    <img src="bag1-2.jpg" />
-    <img src="bag1-3.jpg" />
-  </div>
-  <div class="product-name">Classic Pink Bag</div>
-  <div class="product-price">250 EGP</div>
-  <a class="order" href="#" onclick="openForm('Classic Pink Bag')">اطلب الآن</a>
-</div>
-
-<!-- Hidden Order Form -->
-<div id="orderForm" style="display:none; position:fixed; top:10%; left:50%; transform:translateX(-50%);
- background:#fff; padding:20px; border-radius:10px; box-shadow:0 0 10px rgba(0,0,0,0.2); z-index:1000;">
-  <h3>تأكيد الطلب</h3>
-  <form id="form">
-    <input type="hidden" id="productName" name="productName" />
-    <label>الاسم:</label><br>
-    <input type="text" name="name" required><br><br>
-
-    <label>رقم الموبايل:</label><br>
-    <input type="text" name="phone" required><br><br>
-
-    <label>العنوان:</label><br>
-    <input type="text" name="address" required><br><br>
-
-    <button type="submit">تأكيد الطلب</button>
-    <button type="button" onclick="closeForm()">إلغاء</button>
-  </form>
-</div>
-
-<script>
-  function openForm(product) {
-    document.getElementById("orderForm").style.display = "block";
-    document.getElementById("productName").value = product;
-  }
-
-  function closeForm() {
-    document.getElementById("orderForm").style.display = "none";
-  }
-
-  // لما المستخدم يضغط تأكيد الطلب
-  document.getElementById("form").addEventListener("submit", function(e) {
-    e.preventDefault();
-
-    // هنبعت البيانات لجوجل شيت (دي الخطوة اللي هنكملها في المرحلة الجاية)
-    alert("تم إرسال الطلب! هنكلمك في أقرب وقت ❤️");
-
-    // إخفاء الفورم بعد الإرسال
-    closeForm();
-    document.getElementById("form").reset();
-  });
-</script>
-
-    <!-- Bag 2 -->
-    <div class="product-card">
-      <div class="slider">
-        <img src="bag2.jpg" class="active" />
-        <img src="bag2-2.jpg" />
-        <img src="bag2-3.jpg" />
-      </div>
-      <div class="product-name">LILLY</div>
-      <div class="product-price">450 EGP</div>
-      <a class="order" href="https://wa.me/201115690207">اطلب الآن</a>
+  <!-- المنتج الأول -->
+  <div class="product-card">
+    <div class="slider">
+      <img src="bag1.jpg.jpg" class="active" />
+      <img src="bag1-2.jpg" />
+      <img src="bag1-3.jpg" />
     </div>
-
+    <div class="product-name">Classic Pink Bag</div>
+    <div class="product-price">250 EGP</div>
+    <a class="order" href="#" onclick="openForm('Classic Pink Bag')">اطلب الآن</a>
   </div>
 
-  <div class="collection">Our Collection</div>
-
-  <footer>
-    للطلبات: <a href="https://wa.me/201117877481">+0201117877481</a>
-  </footer>
-
-  <!-- Modal -->
-  <div id="imageModal" class="modal">
-    <span class="close">&times;</span>
-    <img class="modal-content" id="modalImg" />
+  <!-- المنتج الثاني -->
+  <div class="product-card">
+    <div class="slider">
+      <img src="bag2.jpg" class="active" />
+      <img src="bag2-2.jpg" />
+      <img src="bag2-3.jpg" />
+    </div>
+    <div class="product-name">LILLY</div>
+    <div class="product-price">450 EGP</div>
+    <a class="order" href="#" onclick="openForm('LILLY')">اطلب الآن</a>
   </div>
 
+  <!-- نموذج الطلب -->
+  <div id="orderForm">
+    <h3>تأكيد الطلب</h3>
+    <form id="form">
+      <input type="hidden" id="productName" name="productName" />
+      
+      <label>الاسم:</label>
+      <input type="text" name="name" required>
+
+      <label>رقم الموبايل:</label>
+      <input type="text" name="phone" required>
+
+      <label>العنوان:</label>
+      <input type="text" name="address" required>
+
+      <button type="submit">تأكيد الطلب</button>
+      <button type="button" onclick="closeForm()">إلغاء</button>
+    </form>
+  </div>
+
+  <!-- سكريبت -->
   <script>
-    // Image slider
-    const sliders = document.querySelectorAll(".slider");
-    sliders.forEach((slider) => {
-      const images = slider.querySelectorAll("img");
-      let index = 0;
-      setInterval(() => {
-        images[index].classList.remove("active");
-        index = (index + 1) % images.length;
-        images[index].classList.add("active");
-      }, 2000);
+    function openForm(product) {
+      document.getElementById("orderForm").style.display = "block";
+      document.getElementById("productName").value = product;
+    }
+
+    function closeForm() {
+      document.getElementById("orderForm").style.display = "none";
+    }
+
+    document.getElementById("form").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const name = this.name.value;
+      const phone = this.phone.value;
+      const address = this.address.value;
+      const product = this.productName.value;
+
+      alert("✅ تم استلام الطلب الخاص بـ " + product + "\nهنكلمك قريب ❤️");
+
+      this.reset();
+      closeForm();
     });
-
-    // Modal zoom
-    const modal = document.getElementById("imageModal");
-    const modalImg = document.getElementById("modalImg");
-    const closeModal = document.querySelector(".close");
-
-    document.querySelectorAll(".slider img").forEach(img => {
-      img.addEventListener("click", function() {
-        modal.style.display = "block";
-        modalImg.src = this.src;
-      });
-    });
-
-    closeModal.onclick = function() {
-      modal.style.display = "none";
-    };
-
-    window.onclick = function(event) {
-      if (event.target == modal) {
-        modal.style.display = "none";
-      }
-    };
   </script>
 
 </body>
 </html>
-
