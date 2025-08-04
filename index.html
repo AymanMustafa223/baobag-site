@@ -1,83 +1,78 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar">
 <head>
   <meta charset="UTF-8">
-  <title>Baobag | شنط أنيقة</title>
+  <title>متجر Baobag</title>
   <style>
     body {
       font-family: 'Cairo', sans-serif;
-      background: #f5f5f5;
       margin: 0;
       padding: 0;
+      background: linear-gradient(to bottom, #f9f9f9, #e0e0e0);
+      color: #333;
       text-align: center;
     }
-
     header {
-      background-color: #222;
-      color: #fff;
-      padding: 20px 0;
+      background-color: #2c3e50;
+      color: white;
+      padding: 1rem;
     }
-
-    h1 {
-      margin: 0;
-      font-size: 2.5em;
-    }
-
-    .description {
-      color: #888;
-      font-size: 1.2em;
-      margin-top: 5px;
-    }
-
-    .bag-card {
-      background: #fff;
-      margin: 40px auto;
-      padding: 20px;
-      width: 90%;
-      max-width: 400px;
+    .product {
+      margin: 2rem auto;
+      padding: 1rem;
+      width: 300px;
+      background: white;
       border-radius: 15px;
-      box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
     }
-
-    .bag-card img {
+    .product:hover {
+      transform: scale(1.05);
+    }
+    .product img {
       width: 100%;
       border-radius: 10px;
     }
-
-    .price {
-      font-size: 1.5em;
-      color: #333;
-      margin: 15px 0;
+    .product h2 {
+      margin: 1rem 0 0.5rem;
+      font-size: 1.5rem;
+      color: #2c3e50;
     }
-
-    .whatsapp-btn {
+    .product p {
+      margin-bottom: 1rem;
+      font-size: 1.2rem;
+      color: #555;
+    }
+    .product a {
       display: inline-block;
-      padding: 12px 20px;
-      background-color: #25D366;
+      padding: 0.5rem 1.5rem;
+      background-color: #e74c3c;
       color: white;
-      font-size: 1.1em;
       text-decoration: none;
-      border-radius: 10px;
-      transition: 0.3s;
+      border-radius: 5px;
+      font-weight: bold;
+      transition: background-color 0.3s;
     }
-
-    .whatsapp-btn:hover {
-      background-color: #1ebe5d;
+    .product a:hover {
+      background-color: #c0392b;
     }
   </style>
 </head>
 <body>
+
   <header>
-    <h1>Baobag</h1>
-    <p class="description">شنط أنيقة بسعر مناسب</p>
+    <h1>أهلاً بك في متجر Baobag!</h1>
+    <p>أفضل الشنط بأحسن سعر</p>
   </header>
 
-  <div class="bag-card">
+  <div class="product">
     <img src="bag1.jpg.jpg" alt="شنطة">
-    <p class="price">300 جنيه</p>
-    <a class="whatsapp-btn" href="https://wa.me/201148531702?text=أريد%20طلب%20شنطة%20من%20Baobag%20بـ%20300%20جنيه" target="_blank">
-      اطلب الآن على واتساب
-    </a>
+    <h2>شنطة مميزة</h2>
+    <p>السعر: 500 جنيه</p>
+    <a href="https://wa.me/201148531602" target="_blank">اطلبها الآن عبر واتساب</a>
   </div>
+
 </body>
 </html>
+
+
