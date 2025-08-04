@@ -1,78 +1,124 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>متجر Baobag</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Baobag Shop</title>
   <style>
     body {
-      font-family: 'Cairo', sans-serif;
       margin: 0;
-      padding: 0;
-      background: linear-gradient(to bottom, #f9f9f9, #e0e0e0);
-      color: #333;
-      text-align: center;
+      font-family: 'Helvetica Neue', sans-serif;
+      background-color: #fff;
+      color: #d6336c;
     }
     header {
-      background-color: #2c3e50;
-      color: white;
-      padding: 1rem;
+      background-color: #f8d7da;
+      padding: 20px;
+      text-align: center;
     }
-    .product {
-      margin: 2rem auto;
-      padding: 1rem;
-      width: 300px;
-      background: white;
+    header h1 {
+      font-size: 36px;
+      margin: 0;
+      font-family: 'Cursive', sans-serif;
+    }
+    .announcement {
+      background-color: #f1c0c0;
+      color: #8b0000;
+      padding: 10px;
+      text-align: center;
+      font-weight: bold;
+    }
+    .section-title {
+      text-align: center;
+      font-size: 28px;
+      margin-top: 40px;
+      margin-bottom: 20px;
+    }
+    .products {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      padding: 0 20px;
+    }
+    .product-card {
+      background-color: #ffe6eb;
       border-radius: 15px;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-      transition: transform 0.3s;
+      width: 160px;
+      text-align: center;
+      padding: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     }
-    .product:hover {
-      transform: scale(1.05);
-    }
-    .product img {
+    .product-card img {
       width: 100%;
       border-radius: 10px;
     }
-    .product h2 {
-      margin: 1rem 0 0.5rem;
-      font-size: 1.5rem;
-      color: #2c3e50;
-    }
-    .product p {
-      margin-bottom: 1rem;
-      font-size: 1.2rem;
-      color: #555;
-    }
-    .product a {
-      display: inline-block;
-      padding: 0.5rem 1.5rem;
-      background-color: #e74c3c;
-      color: white;
-      text-decoration: none;
-      border-radius: 5px;
+    .product-name {
       font-weight: bold;
-      transition: background-color 0.3s;
+      margin-top: 10px;
+      font-size: 16px;
     }
-    .product a:hover {
-      background-color: #c0392b;
+    .product-price {
+      color: #e63946;
+      margin-top: 5px;
+      font-size: 14px;
+    }
+    .collection {
+      text-align: center;
+      font-size: 24px;
+      margin: 40px 0;
+      color: #d6336c;
+    }
+    footer {
+      background-color: #f8d7da;
+      text-align: center;
+      padding: 15px;
+      font-size: 16px;
+    }
+    a.order {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 8px 20px;
+      background-color: #d6336c;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: bold;
     }
   </style>
 </head>
 <body>
 
   <header>
-    <h1>أهلاً بك في متجر Baobag!</h1>
-    <p>أفضل الشنط بأحسن سعر</p>
+    <h1>Baobag</h1>
   </header>
 
-  <div class="product">
-    <img src="bag1.jpg.jpg" alt="شنطة">
-    <h2>شنطة مميزة</h2>
-    <p>السعر: 500 جنيه</p>
-    <a href="https://wa.me/201148531602" target="_blank">اطلبها الآن عبر واتساب</a>
+  <div class="announcement">
+    اطلب الآن - شحن مجاني فوق 999 جنيه مصري!
   </div>
+
+  <div class="section-title">Best Sellers</div>
+
+  <div class="products">
+    <div class="product-card">
+      <img src="bag1.jpg" alt="Bag 1">
+      <div class="product-name">Classic Pink Bag</div>
+      <div class="product-price">250 EGP</div>
+      <a class="order" href="https://wa.me/201117877481">اطلب الآن</a>
+    </div>
+    <div class="product-card">
+      <img src="bag2.jpg" alt="Bag 2">
+      <div class="product-name">Elegant Beige Bag</div>
+      <div class="product-price">300 EGP</div>
+      <a class="order" href="https://wa.me/201117877481">اطلب الآن</a>
+    </div>
+  </div>
+
+  <div class="collection">Our Collection</div>
+
+  <footer>
+    للطلبات: <a href="https://wa.me/201117877481">+0201117877481</a>
+  </footer>
 
 </body>
 </html>
-
-
