@@ -1,157 +1,219 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar">
 <head>
-  <meta charset="UTF-8">
-  <title>Baobag - طلب الشنط</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Baobag</title>
   <style>
     body {
       font-family: 'Arial', sans-serif;
-      background: #f7f7f7;
-      padding: 20px;
+      direction: rtl;
       text-align: center;
+      background-color: #fefefe;
     }
+
     .product-card {
-      background: #fff;
-      border-radius: 15px;
-      padding: 15px;
-      margin: 15px auto;
       width: 300px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+      margin: 40px auto;
+      border: 1px solid #ccc;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 5px 10px rgba(0,0,0,0.1);
     }
+
+    .slider {
+      position: relative;
+      height: 300px;
+    }
+
     .slider img {
       width: 100%;
-      border-radius: 10px;
-      margin-bottom: 10px;
+      height: 300px;
+      display: none;
+      object-fit: cover;
     }
+
+    .slider img.active {
+      display: block;
+    }
+
     .product-name {
       font-size: 20px;
-      font-weight: bold;
-      margin-bottom: 8px;
+      margin: 10px 0;
     }
+
     .product-price {
-      color: #e91e63;
       font-size: 18px;
+      color: #f06292;
       margin-bottom: 10px;
     }
+
     .order {
-      display: inline-block;
-      background: #e91e63;
+      display: block;
+      padding: 10px;
+      background-color: #4CAF50;
       color: white;
-      padding: 10px 20px;
       text-decoration: none;
-      border-radius: 25px;
+      border-radius: 0 0 15px 15px;
     }
 
-    #orderForm {
+    .modal {
       display: none;
       position: fixed;
-      top: 10%;
-      left: 50%;
-      transform: translateX(-50%);
-      background: #fff;
+      z-index: 99;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.6);
+    }
+
+    .modal-content {
+      background-color: white;
+      margin: 10% auto;
       padding: 20px;
-      border-radius: 15px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.3);
-      z-index: 1000;
       width: 90%;
       max-width: 400px;
-      text-align: right;
+      border-radius: 10px;
     }
 
-    #orderForm input {
+    .modal-content input,
+    .modal-content button {
       width: 100%;
       padding: 10px;
-      margin: 8px 0;
-      border-radius: 8px;
-      border: 1px solid #ccc;
+      margin: 10px 0;
+      font-size: 16px;
     }
 
-    #orderForm button {
-      background: #e91e63;
-      color: white;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 20px;
-      margin-top: 10px;
+    .close {
+      float: left;
+      font-size: 28px;
+      font-weight: bold;
+      color: #aaa;
       cursor: pointer;
     }
 
-    #orderForm button[type="button"] {
-      background: #777;
+    .close:hover {
+      color: red;
+    }
+
+    /* Zoom modal */
+    #imageModal img {
+      width: 80%;
+      max-width: 500px;
+      margin: auto;
+      display: block;
     }
   </style>
 </head>
 <body>
 
-  <h1>شنط Baobag</h1>
-
-  <!-- المنتج الأول -->
   <div class="product-card">
     <div class="slider">
-      <img src="bag1.jpg.jpg" class="active" />
+      <img src="bag1.jpg" class="active" />
       <img src="bag1-2.jpg" />
       <img src="bag1-3.jpg" />
     </div>
     <div class="product-name">Classic Pink Bag</div>
     <div class="product-price">250 EGP</div>
-    <a class="order" href="#" onclick="openForm('Classic Pink Bag')">اطلب الآن</a>
+    <button class="order-btn">اطلب الآن</button>
   </div>
 
-  <!-- المنتج الثاني -->
-  <div class="product-card">
-    <div class="slider">
-      <img src="bag2.jpg" class="active" />
-      <img src="bag2-2.jpg" />
-      <img src="bag2-3.jpg" />
+  <!-- Modal Form -->
+  <div id="formModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h3>أطلب الآن</h3>
+      <form id="orderForm">
+        <input type="text" id="bagName" name="bagName" readonly />
+        <input type="text" id="customerName" placeholder="الاسم" required />
+        <input type="text" id="phone" placeholder="رقم الهاتف" required />
+        <input type="text" id="address" placeholder="العنوان" required />
+        <input type="number" id="quantity" placeholder="الكمية" min="1" value="1" required />
+        <button type="submit">إرسال الطلب على واتساب</button>
+      </form>
     </div>
-    <div class="product-name">LILLY</div>
-    <div class="product-price">450 EGP</div>
-    <a class="order" href="#" onclick="openForm('LILLY')">اطلب الآن</a>
   </div>
 
-  <!-- نموذج الطلب -->
-  <div id="orderForm">
-    <h3>تأكيد الطلب</h3>
-    <form id="form">
-      <input type="hidden" id="productName" name="productName" />
-      
-      <label>الاسم:</label>
-      <input type="text" name="name" required>
-
-      <label>رقم الموبايل:</label>
-      <input type="text" name="phone" required>
-
-      <label>العنوان:</label>
-      <input type="text" name="address" required>
-
-      <button type="submit">تأكيد الطلب</button>
-      <button type="button" onclick="closeForm()">إلغاء</button>
-    </form>
+  <!-- Image Zoom Modal -->
+  <div id="imageModal" class="modal">
+    <span class="close zoom-close">&times;</span>
+    <img class="modal-content" id="modalImg" />
   </div>
 
-  <!-- سكريبت -->
   <script>
-    function openForm(product) {
-      document.getElementById("orderForm").style.display = "block";
-      document.getElementById("productName").value = product;
-    }
+    // Slider
+    const sliders = document.querySelectorAll(".slider");
+    sliders.forEach(slider => {
+      const images = slider.querySelectorAll("img");
+      let index = 0;
+      setInterval(() => {
+        images[index].classList.remove("active");
+        index = (index + 1) % images.length;
+        images[index].classList.add("active");
+      }, 2000);
+    });
 
-    function closeForm() {
-      document.getElementById("orderForm").style.display = "none";
-    }
+    // Zoom modal
+    const zoomModal = document.getElementById("imageModal");
+    const modalImg = document.getElementById("modalImg");
+    document.querySelectorAll(".slider img").forEach(img => {
+      img.addEventListener("click", function () {
+        zoomModal.style.display = "block";
+        modalImg.src = this.src;
+      });
+    });
 
-    document.getElementById("form").addEventListener("submit", function(e) {
+    document.querySelector(".zoom-close").onclick = function () {
+      zoomModal.style.display = "none";
+    };
+
+    // Order form modal
+    const formModal = document.getElementById("formModal");
+    const formClose = document.querySelector("#formModal .close");
+    const bagNameField = document.getElementById("bagName");
+
+    document.querySelectorAll(".order-btn").forEach(button => {
+      button.addEventListener("click", function () {
+        const productCard = this.closest(".product-card");
+        const bagName = productCard.querySelector(".product-name").textContent;
+        bagNameField.value = bagName;
+        formModal.style.display = "block";
+      });
+    });
+
+    formClose.onclick = function () {
+      formModal.style.display = "none";
+    };
+
+    window.onclick = function (event) {
+      if (event.target === formModal || event.target === zoomModal) {
+        formModal.style.display = "none";
+        zoomModal.style.display = "none";
+      }
+    };
+
+    // Send to WhatsApp
+    document.getElementById("orderForm").addEventListener("submit", function (e) {
       e.preventDefault();
+      const bag = document.getElementById("bagName").value;
+      const name = document.getElementById("customerName").value;
+      const phone = document.getElementById("phone").value;
+      const address = document.getElementById("address").value;
+      const quantity = document.getElementById("quantity").value;
 
-      const name = this.name.value;
-      const phone = this.phone.value;
-      const address = this.address.value;
-      const product = this.productName.value;
+      const message = `طلب جديد من Baobag:
+المنتج: ${bag}
+الكمية: ${quantity}
+الاسم: ${name}
+رقم الهاتف: ${phone}
+العنوان: ${address}`;
 
-      alert("✅ تم استلام الطلب الخاص بـ " + product + "\nهنكلمك قريب ❤️");
-
+      const whatsappLink = `https://wa.me/201117877481?text=${encodeURIComponent(message)}`;
+      window.open(whatsappLink, '_blank');
+      formModal.style.display = "none";
       this.reset();
-      closeForm();
     });
   </script>
 
