@@ -202,30 +202,29 @@
       product: document.getElementById("product").value
     };
 
-   fetch("https://script.google.com/macros/s/AKfycb.../exec", {
+   fetch("https://script.google.com/macros/s/AKfycbygFoGHPKFeo0Z-US8TDBQQRGbQgu0RBb7VlOvOHMJsgULNBREkFlXjWBM9-T2mBEnjyg/exec", {
   method: "POST",
   headers: {
     "Content-Type": "application/json"
   },
-  body: JSON.stringify({
-    name: "Ayman",
-    phone: "0111111111",
-    address: "Cairo",
-    product: "Bag"
+  body: JSON.stringify(data)
   })
-})
-.then(res => res.json())
-.then(data => {
-  console.log("Success:", data);
-})
-.catch(err => {
-  console.error("Error:", err);
+  .then(res => res.json())
+  .then(data => {
+    alert("تم إرسال الطلب بنجاح!");
+    console.log("Success:", data);
+  })
+  .catch(err => {
+    alert("حصلت مشكلة أثناء الإرسال");
+    console.error("Error:", err);
+  });
 });
 
 </script>
 
 </body>
 </html>
+
 
 
 
