@@ -202,7 +202,7 @@
       product: document.getElementById("product").value
     };
 
-   fetch("https://script.google.com/macros/s/AKfycbygFoGHPKFeo0Z-US8TDBQQRGbQgu0RBb7VlOvOHMJsgULNBREkFlXjWBM9-T2mBEnjyg/exec", {
+   fetch("https://script.google.com/macros/s/AKfycbxEYhOIJ4HDdRvjy5eApqgv3briUoI2fjdLHxeYt09feGQjpTIMsRKQScX1-uS1Ov0F2A/exec", {
   method: "POST",
   headers: {
     "Content-Type": "application/json"
@@ -211,9 +211,11 @@
   })
   .then(res => res.json())
   .then(data => {
-    alert("تم إرسال الطلب بنجاح!");
-    console.log("Success:", data);
-  })
+  alert("تم إرسال الطلب بنجاح!");
+  document.getElementById("orderForm").reset(); // يمسح الفورم
+  document.getElementById("orderForm").style.display = "none"; // يخفيه
+})
+
   .catch(err => {
     alert("حصلت مشكلة أثناء الإرسال");
     console.error("Error:", err);
@@ -224,6 +226,7 @@
 
 </body>
 </html>
+
 
 
 
